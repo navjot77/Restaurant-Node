@@ -46,6 +46,7 @@ exports.editStore= async (req,res)=>{
     res.render('addPage',{title:`Edit Page ${store.name}`, store});
 }
 exports.updateStore= async (req,res)=>{
+    req.body.position.type='Point';
 
     const store= await Store.findOneAndUpdate({_id:req.params.id},
     req.body,{
