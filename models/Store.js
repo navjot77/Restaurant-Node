@@ -17,7 +17,25 @@ const storeSchema = new mongoose.Schema({
                         type: String,
                             trim: true
                         },
-                tags:[String]
+                tags:[String],
+                position:{
+                    type:{
+                        type: String,
+                        default: 'Point'
+                    },
+                    address: {
+                        type: String,
+                        required: "Please Enter Address"
+                    },
+                    cordinates:[{
+                        type: Number,
+                        required: "Please Enter Address"
+                    }]
+                },
+                created:{
+                    type: Date,
+                    default: Date.now()
+                }
 
 });
 
