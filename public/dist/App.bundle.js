@@ -113,6 +113,54 @@ __webpack_require__(1);
 
 var _bling = __webpack_require__(0);
 
+var _autoMaps = __webpack_require__(9);
+
+var _autoMaps2 = _interopRequireDefault(_autoMaps);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+console.log(Node.prototype);
+(0, _autoMaps2.default)((0, _bling.$)('#address'), (0, _bling.$)('#long'), (0, _bling.$)('#lat'));
+
+/***/ }),
+/* 3 */,
+/* 4 */,
+/* 5 */,
+/* 6 */,
+/* 7 */,
+/* 8 */,
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+function autocomplete(inputA, long, lat) {
+    if (!inputA) {
+        return;
+    }
+    var drop = new google.maps.places.Autocomplete(inputA);
+    drop.addListener('place_changed', function () {
+        var place = drop.getPlace();
+        long.value = place.geometry.location.lng();
+
+        lat.value = place.geometry.location.lat();
+    });
+
+    inputA.on('keydown', function (e) {
+
+        if (e.keyCode === 13) {
+            console.log("1");
+            e.preventDefault();
+        }
+    });
+}
+
+exports.default = autocomplete;
+
 /***/ })
 /******/ ]);
 //# sourceMappingURL=App.bundle.js.map
