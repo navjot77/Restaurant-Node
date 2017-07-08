@@ -18,7 +18,7 @@ exports.homePage = (req,res)=>{
 
 
 
-exports.addPage=(req,res)=>{
+exports.adPage=(req,res)=>{
 
     res.render('addPage',{title:"Add Page"})
 }
@@ -39,4 +39,21 @@ exports.getStores= async (req,res)=>{
     const stores= await Store.find();
     res.render('stores',{title:"Stores Page",stores});
 
+}
+exports.editStore= async (req,res)=>{
+
+    const store = await Store.findOne({_id:req.params.id});
+    res.render('addPage',{title:`Edit Page ${store.name}`, store});
+}
+exports.updateStore= async (req,res)=>{
+
+    const store= await Store.findOneAndUpdate({_id:req.params.id},
+    req.body,{
+        new:true,
+            runValidators: true
+        }).exec();
+
+
+    req.flash('success',`Updated store ${store.name}`);
+    res.redirect(`/stores/${store.slug}`);
 }
