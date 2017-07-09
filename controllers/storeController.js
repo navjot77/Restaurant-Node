@@ -4,17 +4,26 @@
 
 const mongoose=require('mongoose');
 const Store=mongoose.model('Store');
+const multer=require('multer');
+const uuid=require('uuid');
+const jimp=require('jimp');
 
-exports.homeMiddle=(req,res,next)=>{
-    req.name="Navjot Singh"
-  next();
+
+const multerOptions={
+
+  storage: multer.memoryStorage(),
+  fileFilter(req,file,next){
+      const photoType=file.mimetype.startsWith('image/');
+      if (!photoType){
+          next("Wrong Image type.");
+          return;
+      }
+      next(null,true);
+    }
+
 };
 
 
-
-exports.homePage = (req,res)=>{
-    res.render('index',{title:"Home",     name:"elvus"   });
-}
 
 
 
@@ -22,29 +31,43 @@ exports.adPage=(req,res)=>{
 
     res.render('addPage',{title:"Add Page"})
 }
-
 exports.saveFormController= async (req,res)=>{
-
     const store= await (new Store(req.body)).save();
     console.log(store)
     console.log("Data uploaded to database....");
     req.flash('success','Data Uploaded successfully... ');
     res.redirect(`/add/${store.slug}`);
 
-
 }
-
 exports.getStores= async (req,res)=>{
-
     const stores= await Store.find();
     res.render('stores',{title:"Stores Page",stores});
-
 }
 exports.editStore= async (req,res)=>{
-
     const store = await Store.findOne({_id:req.params.id});
     res.render('addPage',{title:`Edit Page ${store.name}`, store});
 }
+
+
+exports.resize = async (req,res,next)=>{
+    if (!req.file) {
+        next();
+        return;
+    }
+    const fileType=req.file.mimetype.split('/')[1];
+    const fileName=uuid.v4();
+    req.body.image=`${fileName}.${fileType}`;
+
+    const image=await jimp.read(req.file.buffer);
+    await image.resize(800,jimp.AUTO);
+    await image.write(`./public/uploads/${req.body.image}`);
+
+    next();
+
+
+
+}
+exports.uploadPhoto=multer(multerOptions).single('image');
 exports.updateStore= async (req,res)=>{
     req.body.position.type='Point';
 
@@ -53,8 +76,6 @@ exports.updateStore= async (req,res)=>{
         new:true,
             runValidators: true
         }).exec();
-
-
     req.flash('success',`Updated store ${store.name}`);
     res.redirect(`/stores/${store.slug}`);
 }

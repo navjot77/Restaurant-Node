@@ -2,7 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d050438b-0d5a-419c-8981-1fbdc6d0f58a" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/0d3624fc-78ee-4297-8d15-e191b9775520.jpeg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/1b7870df-e238-4104-be4c-a267bd5f6257.jpeg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/3e143d06-a3df-4e15-86f6-4efc0a3f5fbc.jpeg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/4a5cb791-0140-4fa2-864c-af786640157d.jpeg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/6c34119d-b9fd-4051-911e-948a16068229.jpeg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/6da53d2e-c0e0-4aef-9ec9-9513b79ece15.jpeg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/7628c82c-66df-493c-ba5f-9237c6bc3516.jpeg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/7ddb5903-f1e8-486f-b4ba-9a0ff5632429.jpeg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/7ea7c02c-9054-442a-9126-788bf3471499.jpeg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/96a33834-d7aa-4758-b980-fca901ea5956.jpeg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/9f2fc898-56b9-47fd-8a78-1d43c1377dc8.jpeg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/a10ca916-af2a-4a98-96a1-3e320df006f9.jpeg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/a6b38a1d-38c3-47af-ae4c-0ab26d8edec3.jpeg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/b5792f01-41c8-41b7-906d-1bdb411e4a55.jpeg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/bb7f7d60-9b0c-46b0-a0e4-1422d5752567.jpeg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/c589ef95-b942-4e8a-a63e-cab74c465b9d.jpeg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/e3c532c9-cb77-4d92-9267-9abedeae2820.jpeg" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controllers/storeController.js" afterPath="$PROJECT_DIR$/controllers/storeController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/Store.js" afterPath="$PROJECT_DIR$/models/Store.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/index.js" afterPath="$PROJECT_DIR$/routes/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/mixins/formMixin.pug" afterPath="$PROJECT_DIR$/views/mixins/formMixin.pug" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/mixins/storeCard.pug" afterPath="$PROJECT_DIR$/views/mixins/storeCard.pug" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -27,21 +48,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/routes/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="56" lean-forward="false" selection-start-line="16" selection-start-column="56" selection-end-line="16" selection-end-column="56" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="formMixin.pug" pinned="false" current-in-tab="true">
+      <file leaf-file-name="formMixin.pug" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/mixins/formMixin.pug">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="24" column="56" lean-forward="true" selection-start-line="24" selection-start-column="56" selection-end-line="24" selection-end-column="56" />
+            <state relative-caret-position="210">
+              <caret line="14" column="6" lean-forward="false" selection-start-line="14" selection-start-column="6" selection-end-line="14" selection-end-column="6" />
               <folding />
             </state>
           </provider>
@@ -50,8 +61,8 @@
       <file leaf-file-name="storeController.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controllers/storeController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="585">
-              <caret line="48" column="35" lean-forward="true" selection-start-line="48" selection-start-column="35" selection-end-line="48" selection-end-column="35" />
+            <state relative-caret-position="490">
+              <caret line="48" column="1" lean-forward="true" selection-start-line="48" selection-start-column="1" selection-end-line="48" selection-end-column="1" />
               <folding>
                 <element signature="e#0#45#0" expanded="false" />
               </folding>
@@ -59,14 +70,32 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Store.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/models/Store.js">
+      <file leaf-file-name="stores.pug" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/stores.pug">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
-              <caret line="30" column="36" lean-forward="false" selection-start-line="30" selection-start-column="36" selection-end-line="30" selection-end-column="36" />
-              <folding>
-                <element signature="e#0#45#0" expanded="false" />
-              </folding>
+            <state relative-caret-position="90">
+              <caret line="6" column="20" lean-forward="false" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="20" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="storeCard.pug" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/views/mixins/storeCard.pug">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="10" column="42" lean-forward="false" selection-start-line="10" selection-start-column="42" selection-end-line="10" selection-end-column="42" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="10" column="82" lean-forward="false" selection-start-line="10" selection-start-column="82" selection-end-line="10" selection-end-column="82" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -99,16 +128,16 @@
         <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/start.js" />
         <option value="$PROJECT_DIR$/views/stores.pug" />
-        <option value="$PROJECT_DIR$/views/mixins/storeCard.pug" />
         <option value="$PROJECT_DIR$/views/addPage.pug" />
-        <option value="$PROJECT_DIR$/routes/index.js" />
-        <option value="$PROJECT_DIR$/views/mixins/formMixin.pug" />
-        <option value="$PROJECT_DIR$/models/Store.js" />
         <option value="$PROJECT_DIR$/readme.md" />
         <option value="$PROJECT_DIR$/public/javascripts/modules/autoMaps.js" />
         <option value="$PROJECT_DIR$/public/javascripts/delicious-app.js" />
         <option value="$PROJECT_DIR$/public/javascripts/modules/bling.js" />
+        <option value="$PROJECT_DIR$/models/Store.js" />
+        <option value="$PROJECT_DIR$/views/mixins/formMixin.pug" />
+        <option value="$PROJECT_DIR$/routes/index.js" />
         <option value="$PROJECT_DIR$/controllers/storeController.js" />
+        <option value="$PROJECT_DIR$/views/mixins/storeCard.pug" />
       </list>
     </option>
   </component>
@@ -233,6 +262,10 @@
               <option name="myItemId" value="public" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="uploads" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -289,6 +322,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dang-thats-delicious" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dang-thats-delicious" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -417,12 +464,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1499297168157</updated>
-      <workItem from="1499297169370" duration="40526000" />
+      <workItem from="1499297169370" duration="45900000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40526000" />
+    <option name="totallyTimeSpent" value="45900000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="881" height="900" extended-state="0" />
@@ -669,22 +716,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/stores.pug">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="20" lean-forward="false" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/mixins/storeCard.pug">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="49" lean-forward="true" selection-start-line="10" selection-start-column="49" selection-end-line="10" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/helpers.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -775,6 +806,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/models/Store.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="549">
+          <caret line="40" column="3" lean-forward="true" selection-start-line="40" selection-start-column="3" selection-end-line="40" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#45#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/mixins/formMixin.pug">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="6" lean-forward="false" selection-start-line="14" selection-start-column="6" selection-end-line="14" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -783,38 +832,36 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/storeController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="48" column="35" lean-forward="true" selection-start-line="48" selection-start-column="35" selection-end-line="48" selection-end-column="35" />
-          <folding>
-            <element signature="e#0#45#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/Store.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="30" column="36" lean-forward="false" selection-start-line="30" selection-start-column="36" selection-end-line="30" selection-end-column="36" />
-          <folding>
-            <element signature="e#0#45#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/routes/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="56" lean-forward="false" selection-start-line="16" selection-start-column="56" selection-end-line="16" selection-end-column="56" />
+        <state relative-caret-position="150">
+          <caret line="10" column="82" lean-forward="false" selection-start-line="10" selection-start-column="82" selection-end-line="10" selection-end-column="82" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/mixins/formMixin.pug">
+    <entry file="file://$PROJECT_DIR$/controllers/storeController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="56" lean-forward="true" selection-start-line="24" selection-start-column="56" selection-end-line="24" selection-end-column="56" />
+        <state relative-caret-position="490">
+          <caret line="48" column="1" lean-forward="true" selection-start-line="48" selection-start-column="1" selection-end-line="48" selection-end-column="1" />
+          <folding>
+            <element signature="e#0#45#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/stores.pug">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="20" lean-forward="false" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/mixins/storeCard.pug">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="42" lean-forward="false" selection-start-line="10" selection-start-column="42" selection-end-line="10" selection-end-column="42" />
           <folding />
         </state>
       </provider>

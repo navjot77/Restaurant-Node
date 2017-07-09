@@ -8,7 +8,7 @@ router.get('/',  catchErrors(storeController.getStores));
 
 router.get('/add', storeController.adPage);
 
-router.post('/add', catchErrors(storeController.saveFormController));
+router.post('/add', storeController.uploadPhoto, catchErrors(storeController.resize), catchErrors(storeController.saveFormController));
 
 router.get('/stores',  catchErrors(storeController.getStores));
 

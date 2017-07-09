@@ -35,7 +35,8 @@ const storeSchema = new mongoose.Schema({
                 created:{
                     type: Date,
                     default: Date.now()
-                }
+                },
+                image: String
 
 });
 
