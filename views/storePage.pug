@@ -1,3 +1,16 @@
 extends layout
 block content
-    p=h.dump(store)
+    .single
+        .single__hero
+            img.single__image(src=`/uploads/${store.images||'store.png'}`)
+            h2.title.title--single
+                a(href=`/store/${store.slug}`)=store.name
+    .single__details.inner
+        img.single__map(src=h.staticMap(store.position.cordinates))
+        p.single__location=store.position.address
+    if store.tags
+        ul.tags
+            each item in store.tags
+                li.tag
+                    a.tag__link(href=`/tags/${item}`)
+                        span.tag__text=item
