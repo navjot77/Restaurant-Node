@@ -40,13 +40,24 @@ const storeSchema = new mongoose.Schema({
 
 });
 
-storeSchema.pre('save',function(next){
+storeSchema.pre('save',async function(next){
 
     if(!this.isModified('name')){
         next();
         return;
     }
+
     this.slug = slug(this.name);
+
+    const nameString=new RegExp(`^(${this.slug})((-[0-9]*)?)$`,'i');
+
+    const checkName=await this.constructor.find({slug:nameString});
+    console.log(checkName)
+    if (checkName && checkName.length > 0){
+        const newlen=checkName.length+1;
+        const newSlug=`${this.name}-${newlen}`;
+        this.slug=newSlug;
+    }
     next();
 
 })

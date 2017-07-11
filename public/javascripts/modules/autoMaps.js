@@ -1,4 +1,5 @@
 function autocomplete(inputA, long, lat){
+    console.log(`-----------${inputA}`)
     if (!inputA){
         return;
     }
