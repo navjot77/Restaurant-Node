@@ -40,6 +40,8 @@ const storeSchema = new mongoose.Schema({
 
 });
 
+
+
 storeSchema.pre('save',async function(next){
 
     if(!this.isModified('name')){
@@ -60,7 +62,25 @@ storeSchema.pre('save',async function(next){
     }
     next();
 
-})
+});
+
+
+
+storeSchema.statics.getListOfTags=function () {
+    return this.aggregate([
+        {
+            $unwind:'$tags'
+        },
+        {
+            $group:{_id:'$tags',total:{$sum:1}}
+        },
+        {
+            $sort:{total: -1}
+        }
+
+    ]);
+};
+
 
 module.exports=mongoose.model('Store',storeSchema)
 
