@@ -91,7 +91,7 @@ exports.viewStore = async (req,res)=>{
 //Or use same function instead of two.. Just get the tag and then make
 //other const = tag || {$exists : true}  and pass in find
 exports.getTags=async (req,res)=>{
- 
+
     const tagsL=Store.getListOfTags();
     const storeS= Store.find();
     const [ tagsList,stores ]= await Promise.all([tagsL,storeS]);
@@ -106,3 +106,4 @@ exports.getEachTag=async(req,res)=>{
 
     res.render('tagsPage',{stores, title:tag, tagsList});
 }
+
