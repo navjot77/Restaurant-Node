@@ -32,4 +32,7 @@ router.post('/register',userController.checkRegisterForm, catchErrors(userContro
 router.post('/login',userController.userLogin);
 
 router.get('/logout',userController.logout);
+
+router.get('/account',userController.editAccount)
+router.post('/account',userController.updateAccount)
 module.exports = router;

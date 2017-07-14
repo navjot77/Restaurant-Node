@@ -19,7 +19,7 @@ const app = express();
 
 //Setting Up Passport
 const User=mongoose.model('User');
-console.log('in app.js');
+
 passport.use(User.createStrategy());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());

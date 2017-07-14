@@ -1,0 +1,9 @@
+extends layout
+block content
+    h2=title
+    form.form(action='/account',method='POST')
+        label User Email
+        input(for='user_email' name='user_email' value=user.user_email)
+        label name
+        input(for='name' name='name' value=user.name)
+        input.button(type='submit' value='Update Now')

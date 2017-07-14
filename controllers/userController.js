@@ -70,3 +70,34 @@ exports.isLoggedIn=(req,res,next)=>{
   res.redirect('/')
 
 };
+exports.editAccount= (req,res)=> {
+    if (req.user){
+        res.render('editAccount',{title:'Edit Account',user:req.user});
+    }
+    else{
+        req.flash('error','Please LogIn.');
+        res.redirect('/')
+    }
+    
+}
+exports.updateAccount=async (req,res)=>{
+    if (req.user){
+        const details= {
+            user_email:req.body.user_email,
+            name:req.body.name
+        };
+
+        const user=await User.findOneAndUpdate({_id:req.user._id},
+            {$set: details},
+            {new:true, runValidators:true,context:'query'});
+
+        req.flash('success',"Successfully updated account details");
+
+        res.render('editAccount',{title:'Edit Account',user:user, flashes:req.flash()});
+    }
+    else{
+        req.flash('error','Please LogIn.');
+        res.redirect('/')
+    }
+
+};
