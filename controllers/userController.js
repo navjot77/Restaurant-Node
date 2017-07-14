@@ -2,6 +2,7 @@ const mongoose=require('mongoose');
 const User=mongoose.model('User');
 const promsify=require('es6-promisify');
 const passport=require('passport');
+const crypto=require('crypto')
 
 
 exports.loginForm= (req,res)=>{
@@ -101,3 +102,78 @@ exports.updateAccount=async (req,res)=>{
     }
 
 };
+exports.updatePassword= async (req,res)=>{
+    const user=await User.findOne({user_email:req.body.user_email})
+    if(!user){
+        req.flash("success",'Check your email for reset link')
+        req.redirect('/login');
+        return
+    }
+    user.passToken=crypto.randomBytes(15).toString('hex');
+    user.tokenExpire=Date.now() + 3600000;
+    await user.save();
+
+    req.flash('success',`https://${req.headers.host}/update/reset/${user.passToken}`);
+    res.redirect('/login');
+
+
+};
+
+exports.passwordForm=async (req,res)=>{
+  const token=req.params.token;
+  const user= await User.findOne({
+      passToken:token,
+      tokenExpire:{$gt:Date.now()}
+  });
+  if(!user){
+      req.flash('error',"Token Expired or Wrong token !!")
+      res.redirect('/');
+        return;
+  }
+  else{
+      res.render('passwordResetForm',{title:'Reset Your Password'});
+  }
+
+
+
+};
+
+exports.checkTokenAndResetPassword= async (req,res)=>{
+
+    const token=req.params.token;
+    const user= await User.findOne({
+        passToken:token,
+        tokenExpire:{$gt:Date.now()}
+    });
+    if(!user){
+        req.flash('error',"Token Expired or Wrong token !!")
+        res.redirect('/');
+        return;
+    }
+
+
+    req.checkBody('password',"Input the password field").notEmpty();
+    req.checkBody('confirm_password',"Input the password field").notEmpty();
+
+    req.checkBody('confirm_password',"Password do not match").equals(req.body.password);
+
+    const errors=req.validationErrors();
+    if (errors){
+        req.flash('error',errors.map(err=>err.msg));
+
+        res.redirect('back');
+        return;
+    }
+    const setPassword=promsify(user.setPassword,user)
+    await setPassword(req.body.password);
+    user.tokenExpire=undefined;
+    user.passToken=undefined;
+    const updatedUser=await user.save();
+    req.flash('Success', 'Password Updated. You are logged in');
+    await req.login(updatedUser);
+    res.redirect('/');
+
+
+
+
+}

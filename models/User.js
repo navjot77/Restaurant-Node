@@ -24,7 +24,9 @@ const userSchema= new mongoose.Schema({
     created:{
         type: Date,
         default: Date.now()
-    }
+    },
+    passToken:String,
+    tokenExpire:Date
 });
 
 userSchema.plugin(passportLocal,{usernameField:'user_email'});

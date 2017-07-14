@@ -35,4 +35,10 @@ router.get('/logout',userController.logout);
 
 router.get('/account',userController.editAccount)
 router.post('/account',userController.updateAccount)
+
+router.post('/update',catchErrors(userController.updatePassword));
+
+router.get('/update/reset/:token', catchErrors(userController.passwordForm));
+router.post('/update/reset/:token', catchErrors(userController.checkTokenAndResetPassword));
+
 module.exports = router;

@@ -1,7 +1,9 @@
 extends layout
 include ./mixins/loginFormMixin
+include ./mixins/resetPasswordForm
 
 block content
     .inner
         h2=title
         +loginForm
+        +resetPassForm
