@@ -1,6 +1,7 @@
 const mongoose=require('mongoose');
-//const User=mongoose.model('User');
-
+const User=mongoose.model('User');
+const promsify=require('es6-promisify');
+const passport=require('passport');
 
 exports.loginForm= (req,res)=>{
     res.render('loginpage',{title:'Login Page'})
@@ -36,12 +37,28 @@ exports.checkRegisterForm=(req,res,next)=>{
     if (errors){
         req.flash('error',errors.map(err=>err.msg));
 
-        res.render('register',{title:'Register User', body:req.body, flashes:req.flash()})
+        res.render('register',{title:'Register User', data:req.body})
+        return;
     }
     else {
         next();
     }
+};
 
+exports.saveUserData= async (req,res,next)=>{
+    const newUser=new User({user_email:req.body.user_email, name:req.body.name})
+    const register=promsify(User.register,User);
+    await register(newUser,req.body.password)
+    next();
 
 };
+exports.userLogin=passport.authenticate('local',{
+    successRedirect:'/',
+    failureRedirect:'/login',
+    failureFlash:'Invalid User Email or Password.',
+    successFlash:'Successfully logged In'
+
+});
+
+
 

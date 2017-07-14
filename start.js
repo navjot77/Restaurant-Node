@@ -24,7 +24,7 @@ mongoose.connection.on('error', (err) => {
 //Importing models here...
 
 require('./models/Store');
-
+require('./models/User');
 
 
 

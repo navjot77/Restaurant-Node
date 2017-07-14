@@ -17,7 +17,11 @@ const errorHandlers = require('./handlers/errorHandlers');
 const app = express();
 
 
-
+//Setting Up Passport
+const User=mongoose.model('User');
+passport.use(User.createStrategy());
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views')); // this is the folder where we keep our pug files

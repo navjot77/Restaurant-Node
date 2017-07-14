@@ -2,7 +2,7 @@ const mongoose=require('mongoose');
 mongoose.Promise= global.Promise;
 const md5=require('md5');
 const errorHandler=require('mongoose-mongodb-errors');
-const validators=require('validator');
+const validator=require('validator');
 const passportLocal=require('passport-local-mongoose');
 
 
@@ -17,16 +17,14 @@ const userSchema= new mongoose.Schema({
         validate: [validator.isEmail,'__INVALID EMAIL ___']
     },
     name:{
-        type: password,
+        type: String,
         trim:true,
-        required: 'Enter your password.'
+        required: 'Enter your Name.'
     },
     created:{
         type: Date,
         default: Date.now()
-
     }
-
 });
 
 userSchema.plugin(passportLocal,{usernameField:'user_email'});

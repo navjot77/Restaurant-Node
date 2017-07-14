@@ -1,9 +1,9 @@
-mixin registerForm()
+mixin registerForm(data={})
     form.form(action='/register' method='POST')
         label(for='User Name') Name
-        input(type='email' name='name')
+        input(type='text' name='name' value=data.name)
         label(for='User Email') User Email
-        input(type='email' name='user_email')
+        input(type='email' name='user_email' value=data.user_email)
         label(for='password') Password
         input(type='password' name='password')
         label(for='confirm_password') Confirm Password

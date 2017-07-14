@@ -25,7 +25,9 @@ router.get('/tags/:id',catchErrors(storeController.getEachTag));
 
 router.get('/login',userController.loginForm);
 router.get('/register',userController.registerForm);
-router.post('/register',userController.checkRegisterForm);
+
+router.post('/register',userController.checkRegisterForm, catchErrors(userController.saveUserData),
+                        userController.userLogin);
 
 router.post('/login',userController.loginFormPost);
 
