@@ -7,9 +7,9 @@ const { catchErrors }=require('../handlers/errorHandlers')
 
 router.get('/',  catchErrors(storeController.getStores));
 
-router.get('/add', storeController.adPage);
+router.get('/add', userController.isLoggedIn,storeController.adPage);
 
-router.post('/add', storeController.uploadPhoto, catchErrors(storeController.resize), catchErrors(storeController.saveFormController));
+router.post('/add',userController.isLoggedIn, storeController.uploadPhoto, catchErrors(storeController.resize), catchErrors(storeController.saveFormController));
 
 router.get('/stores',  catchErrors(storeController.getStores));
 
@@ -29,7 +29,7 @@ router.get('/register',userController.registerForm);
 router.post('/register',userController.checkRegisterForm, catchErrors(userController.saveUserData),
                         userController.userLogin);
 
-router.post('/login',userController.loginFormPost);
+router.post('/login',userController.userLogin);
 
-
+router.get('/logout',userController.logout);
 module.exports = router;

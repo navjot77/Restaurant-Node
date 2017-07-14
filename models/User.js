@@ -30,4 +30,11 @@ const userSchema= new mongoose.Schema({
 userSchema.plugin(passportLocal,{usernameField:'user_email'});
 userSchema.plugin(errorHandler);
 
+userSchema.virtual('gravatar').get(function () {
+    console.log('Virtual called ***************')
+    const hash_md5=md5(this.user_email);
+    return `https://gravatar.com/avatar/${hash_md5}?s=250`
+});
+
+
 module.exports= mongoose.model('User',userSchema);

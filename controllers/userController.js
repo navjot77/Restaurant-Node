@@ -3,6 +3,7 @@ const User=mongoose.model('User');
 const promsify=require('es6-promisify');
 const passport=require('passport');
 
+
 exports.loginForm= (req,res)=>{
     res.render('loginpage',{title:'Login Page'})
 
@@ -12,9 +13,6 @@ exports.registerForm=(req,res)=>{
     res.render('register',{title:'Register User'})
 };
 
-exports.loginFormPost=  (req,res)=>{
-    res.json(req.body.email);
-}
 
 exports.checkRegisterForm=(req,res,next)=>{
 
@@ -57,8 +55,18 @@ exports.userLogin=passport.authenticate('local',{
     failureRedirect:'/login',
     failureFlash:'Invalid User Email or Password.',
     successFlash:'Successfully logged In'
-
 });
 
+exports.logout=(req,res)=>{
+  req.logout();
+  res.redirect('/');
+};
+exports.isLoggedIn=(req,res,next)=>{
+  if (req.user){
+      next();
+      return;
+  }
+  req.flash('error','User Must be Logged In');
+  res.redirect('/')
 
-
+};
