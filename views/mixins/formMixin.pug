@@ -1,7 +1,7 @@
-mixin addForm(store = {})
-    form(action=`/add/${store._id || ''}` method='POST' class='card' enctype="multipart/form-data")
+mixin addForm(store={})
+    form.form(action=`/add/${store._id || ''}` method='POST' enctype="multipart/form-data")
         label(for="name") Name
-        input(type='text' id='input-ww' name="name" value=store.name )
+        input(type='text' name="name" value=store.name )
         label(for="Description") Description
         textarea(name="description")=store.description
         label(for="image") Image
@@ -26,4 +26,4 @@ mixin addForm(store = {})
                       tagsS.includes(item)) )
                     label(for='tags')=item
 
-        input(type='submit' value="save" class='button')
+        input.button(type='submit' value="save")

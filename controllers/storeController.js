@@ -32,11 +32,15 @@ exports.adPage=(req,res)=>{
     res.render('addPage',{title:"Add Page"})
 }
 exports.saveFormController= async (req,res)=>{
-    const store= await (new Store(req.body)).save();
-    console.log(store)
-    console.log("Data uploaded to database....");
-    req.flash('success','Data Uploaded successfully... ');
-    res.redirect(`/add/${store.slug}`);
+
+    if(req.user) {
+        req.body.author = req.user._id;
+        const store = await (new Store(req.body)).save();
+        console.log(store)
+        console.log("Data uploaded to database....");
+        req.flash('success', 'Data Uploaded successfully... ');
+        res.redirect(`/store/${store.slug}`);
+    }
 
 }
 exports.getStores= async (req,res)=>{
@@ -44,8 +48,17 @@ exports.getStores= async (req,res)=>{
     res.render('stores',{title:"Stores Page",stores});
 }
 exports.editStore= async (req,res)=>{
-    const store = await Store.findOne({_id:req.params.id});
-    res.render('addPage',{title:`Edit Page ${store.name}`, store});
+
+    const store = await Store.findOne({
+        _id:req.params.id,
+        });
+    if(store.author.equals(req.user._id)) {
+        res.render('addPage', {title: `Edit Page ${store.name}`, store});
+    }
+    else{
+        req.flash('error','Only authorized User can Edit the Store.')
+        res.redirect('/');
+    }
 }
 
 
@@ -66,9 +79,11 @@ exports.resize = async (req,res,next)=>{
 
 
 
-}
+};
 exports.uploadPhoto=multer(multerOptions).single('image');
+
 exports.updateStore= async (req,res)=>{
+    console.log(req.body);
     req.body.position.type='Point';
 
     const store= await Store.findOneAndUpdate({_id:req.params.id},
@@ -77,8 +92,9 @@ exports.updateStore= async (req,res)=>{
             runValidators: true
         }).exec();
     req.flash('success',`Updated store ${store.name}`);
-    res.redirect(`/stores/${store.slug}`);
-}
+    res.redirect(`/store/${store.slug}`);
+};
+
 exports.viewStore = async (req,res)=>{
 
     const store = await Store.findOne({slug:req.params.storeName});

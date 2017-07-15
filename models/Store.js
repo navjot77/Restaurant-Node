@@ -36,7 +36,11 @@ const storeSchema = new mongoose.Schema({
                     type: Date,
                     default: Date.now()
                 },
-                image: String
+                image: String,
+                author:{
+                    type: mongoose.Schema.ObjectId,
+                    ref: 'User'
+                }
 
 });
 
