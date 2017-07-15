@@ -2,12 +2,12 @@ const mongoose=require('mongoose');
 const User=mongoose.model('User');
 const promsify=require('es6-promisify');
 const passport=require('passport');
-const crypto=require('crypto')
+const crypto=require('crypto');
+const email=require('../handlers/email');
 
 
 exports.loginForm= (req,res)=>{
     res.render('loginpage',{title:'Login Page'})
-
 };
 
 exports.registerForm=(req,res)=>{
@@ -112,8 +112,18 @@ exports.updatePassword= async (req,res)=>{
     user.passToken=crypto.randomBytes(15).toString('hex');
     user.tokenExpire=Date.now() + 3600000;
     await user.save();
+// Sending EmAil.. USing email_helpers and views...
+    const url=`${req.headers.host}/update/reset/${user.passToken}`
 
-    req.flash('success',`https://${req.headers.host}/update/reset/${user.passToken}`);
+
+    await email.sendData({
+        user,
+        subject:'Password Reset!!',
+        url,
+        filename:'password-reset'
+    });
+
+    req.flash('success','Check your email for reset link');
     res.redirect('/login');
 
 
@@ -154,7 +164,6 @@ exports.checkTokenAndResetPassword= async (req,res)=>{
 
     req.checkBody('password',"Input the password field").notEmpty();
     req.checkBody('confirm_password',"Input the password field").notEmpty();
-
     req.checkBody('confirm_password',"Password do not match").equals(req.body.password);
 
     const errors=req.validationErrors();
@@ -169,7 +178,7 @@ exports.checkTokenAndResetPassword= async (req,res)=>{
     user.tokenExpire=undefined;
     user.passToken=undefined;
     const updatedUser=await user.save();
-    req.flash('Success', 'Password Updated. You are logged in');
+    req.flash('success', 'Password Updated. You are logged in');
     await req.login(updatedUser);
     res.redirect('/');
 
