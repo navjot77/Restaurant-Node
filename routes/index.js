@@ -41,4 +41,7 @@ router.post('/update',catchErrors(userController.updatePassword));
 router.get('/update/reset/:token', catchErrors(userController.passwordForm));
 router.post('/update/reset/:token', catchErrors(userController.checkTokenAndResetPassword));
 
+
+router.get('/api/search',catchErrors(storeController.searchStore));
+
 module.exports = router;

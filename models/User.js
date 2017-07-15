@@ -21,10 +21,10 @@ const userSchema= new mongoose.Schema({
         trim:true,
         required: 'Enter your Name.'
     },
-    created:{
-        type: Date,
-        default: Date.now()
-    },
+    //created:{
+      //  type: Date,
+        //default: Date.now()
+    //},
     passToken:String,
     tokenExpire:Date
 });

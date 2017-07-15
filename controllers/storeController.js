@@ -123,3 +123,22 @@ exports.getEachTag=async(req,res)=>{
     res.render('tagsPage',{stores, title:tag, tagsList});
 }
 
+exports.searchStore=async(req,res)=> {
+
+    const data = await Store.find({
+        $text: {
+            $search: req.query.q
+        }
+    }, {
+        matches: {
+            $meta: 'textScore'
+        }
+    }).sort({
+        matches: {$meta: 'textScore'}
+    });
+
+
+
+  res.json(data);
+
+};
