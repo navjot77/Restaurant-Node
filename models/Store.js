@@ -27,10 +27,11 @@ const storeSchema = new mongoose.Schema({
                         type: String,
                         required: "Please Enter Address"
                     },
-                    cordinates:[{
+                    coordinates:[{
                         type: Number,
-                        required: "Please Enter Address"
+                        required: "Please Enter location"
                     }]
+
                 },
                 created:{
                     type: Date,
@@ -48,6 +49,11 @@ storeSchema.index({
    name: 'text',
     description:'text'
 
+});
+
+
+storeSchema.index({
+    position: '2dsphere'
 });
 
 

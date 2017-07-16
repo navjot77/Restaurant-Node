@@ -137,8 +137,29 @@ exports.searchStore=async(req,res)=> {
         matches: {$meta: 'textScore'}
     });
 
-
-
   res.json(data);
+
+};
+exports.nearByStores=async(req,res)=>{
+
+    const coordinates=[req.query.long, req.query.lat].map(parseFloat);
+
+    const qu={
+        position:{
+            $near:{
+                $geometry: {
+                    type: 'Point',
+                    coordinates
+                },
+                $maxDistance:10000
+
+
+            }
+        }
+    };
+
+    const data=await Store.find(qu).select('name slug position').limit(5);
+
+    res.json(data);
 
 };

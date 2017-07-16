@@ -12,9 +12,9 @@ mixin addForm(store={})
         label(for="address") Address
         input(type='text' id='address' name="position[address]" value=(store.position && store.position.address) )
         label(for="long") Longitude
-        input(type='text' id='long' name="position[cordinates][0]" value=(store.position && store.position.cordinates[0]) )
+        input(type='text' id='long' name="position[coordinates][0]" value=(store.position && store.position.coordinates[0]) )
         label(for="lat") Latitude
-        input(type='text' id='lat' name="position[cordinates][1]" value=(store.position && store.position.cordinates[1]) )
+        input(type='text' id='lat' name="position[coordinates][1]" value=(store.position && store.position.coordinates[1]) )
 
 
         -const list=['Vegeterian','Open Late','Parking', 'Wi-Fi'];

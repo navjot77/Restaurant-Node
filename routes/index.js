@@ -43,5 +43,5 @@ router.post('/update/reset/:token', catchErrors(userController.checkTokenAndRese
 
 
 router.get('/api/search',catchErrors(storeController.searchStore));
-
+router.get('/api/search/near',catchErrors(storeController.nearByStores));
 module.exports = router;
