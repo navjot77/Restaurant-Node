@@ -175,11 +175,18 @@ exports.fillHearts=async (req,res)=>{
      [operation]:{hearts: req.params.id}},
         {new: true}
     );
-
-
  res.json(updateHearts);
 
+};
 
+exports.getHeartStores=async (req,res)=>{
 
-
+    //METHOD 1 const stores=await User.find({_id:req.user._id}).populate('hearts');
+    //METHOD 2
+    const stores=await Store.find({
+        _id:{
+            $in: req.user.hearts
+        }
+    });
+    res.render('stores',{title:'Favourites', stores});
 };

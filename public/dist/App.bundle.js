@@ -2043,6 +2043,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function heartEvent(e) {
     var _this = this;
 
+    // console.log('HEart clicked...')
     e.preventDefault();
     _axios2.default.post(this.action).then(function (res) {
         var isChecked = _this.heart__button.classList.toggle('heart__button--hearted');
