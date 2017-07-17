@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const storeController=require('../controllers/storeController');
 const userController=require('../controllers/userController');
+const reviewController=require('../controllers/reviewController');
 
 const { catchErrors }=require('../handlers/errorHandlers')
 
@@ -50,6 +51,9 @@ router.post('/api/store/:id',catchErrors(storeController.fillHearts));
 
 
 router.get('/hearts',catchErrors(storeController.getHeartStores));
+
+
+router.post('/reviews/:id',catchErrors(reviewController.saveReview))
 module.exports = router;
 
 
