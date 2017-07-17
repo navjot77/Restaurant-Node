@@ -1912,11 +1912,108 @@ var _searchStore = __webpack_require__(10);
 
 var _searchStore2 = _interopRequireDefault(_searchStore);
 
+var _map = __webpack_require__(37);
+
+var _map2 = _interopRequireDefault(_map);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 (0, _autoMaps2.default)((0, _bling.$)('#address'), (0, _bling.$)('#long'), (0, _bling.$)('#lat'));
 
 (0, _searchStore2.default)((0, _bling.$)('.search'));
+(0, _map2.default)((0, _bling.$)('#map'));
+
+/***/ }),
+/* 31 */,
+/* 32 */,
+/* 33 */,
+/* 34 */,
+/* 35 */,
+/* 36 */,
+/* 37 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _axios = __webpack_require__(12);
+
+var _axios2 = _interopRequireDefault(_axios);
+
+var _bling = __webpack_require__(9);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var options = {
+
+    center: { lat: 43.2, lng: -79.8 },
+    zoom: 2
+};
+
+function loadMap(map) {
+    var lat = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 43.2;
+    var lng = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : -79.8;
+
+
+    _axios2.default.get('/api/search/near?long=' + lng + '&lat=' + lat).then(function (res) {
+
+        var infoWindow = new google.maps.InfoWindow();
+        var bounds = new google.maps.LatLngBounds();
+
+        //console.log(res.data);
+        if (!res.data.length) {
+
+            bounds.extend({ lng: lng, lat: lat });
+            map.setCenter(bounds.getCenter());
+            map.setZoom(6);
+            alert('Nothing found, Widen Your Search....');
+            return;
+        }
+
+        var markers = res.data.map(function (item) {
+            var values = item.position.coordinates;
+            var position = {
+                lng: values[0],
+                lat: values[1]
+            };
+            bounds.extend(position);
+            var marker = new google.maps.Marker({ map: map, position: position });
+            marker.place = item;
+
+            return marker;
+        });
+
+        map.setCenter(bounds.getCenter());
+        map.fitBounds(bounds);
+
+        markers.forEach(function (marker) {
+            marker.addListener('click', function () {
+                infoWindow.setContent(marker.place.name);
+                infoWindow.open(map, this);
+            });
+        });
+    });
+}
+
+function makeMap(mapDiv) {
+    if (!mapDiv) return;
+    var map = new google.maps.Map(mapDiv, options);
+
+    loadMap(map);
+
+    var input = (0, _bling.$)('[name="geolocate"]');
+    var autoComplete = new google.maps.places.Autocomplete(input);
+    autoComplete.addListener('place_changed', function () {
+        var place = autoComplete.getPlace();
+        loadMap(map, place.geometry.location.lat(), place.geometry.location.lng());
+    });
+}
+
+exports.default = makeMap;
 
 /***/ })
 /******/ ]);

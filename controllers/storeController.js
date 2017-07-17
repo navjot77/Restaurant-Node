@@ -163,3 +163,6 @@ exports.nearByStores=async(req,res)=>{
     res.json(data);
 
 };
+exports.mapPage=(req,res)=>{
+    res.render('map',{title:'Map Page'});
+}
