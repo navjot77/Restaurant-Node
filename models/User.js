@@ -26,7 +26,10 @@ const userSchema= new mongoose.Schema({
         //default: Date.now()
     //},
     passToken:String,
-    tokenExpire:Date
+    tokenExpire:Date,
+    hearts:[
+        {type:mongoose.Schema.ObjectId, ref: 'Store'}
+    ]
 });
 
 userSchema.plugin(passportLocal,{usernameField:'user_email'});

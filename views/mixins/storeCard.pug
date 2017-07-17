@@ -3,6 +3,14 @@ mixin storeMixin(store)
         .store__hero
             .store__actions
                 if user
+                    .store__action.store__action--heart
+                        form.heart(method='POST' action=`/api/store/${store._id}`)
+                            -const heartString=user.hearts.map(obj=>obj.toString());
+                            -const isActive=heartString.includes(store._id.toString())?'heart__button--hearted':''
+                            button.heart__button(type='submit' name='heart__button' class=isActive)!=h.icon('heart')
+
+
+                if user
                     if store.author.equals(user._id)
                         .store__action.store__actions--edit
                             a(href=`/stores/${store._id}/edit`)!=h.icon('pencil')

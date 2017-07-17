@@ -46,6 +46,7 @@ router.get('/api/search',catchErrors(storeController.searchStore));
 router.get('/api/search/near',catchErrors(storeController.nearByStores));
 
 router.get('/map/',storeController.mapPage);
+router.post('/api/store/:id',catchErrors(storeController.fillHearts));
 module.exports = router;
 
 

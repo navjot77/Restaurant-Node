@@ -7,7 +7,7 @@ const Store=mongoose.model('Store');
 const multer=require('multer');
 const uuid=require('uuid');
 const jimp=require('jimp');
-
+const User=mongoose.model('User');
 
 const multerOptions={
 
@@ -123,6 +123,8 @@ exports.getEachTag=async(req,res)=>{
     res.render('tagsPage',{stores, title:tag, tagsList});
 }
 
+
+
 exports.searchStore=async(req,res)=> {
 
     const data = await Store.find({
@@ -165,4 +167,19 @@ exports.nearByStores=async(req,res)=>{
 };
 exports.mapPage=(req,res)=>{
     res.render('map',{title:'Map Page'});
-}
+};
+exports.fillHearts=async (req,res)=>{
+ const userHearts=req.user.hearts.map((obj)=> obj.toString());
+ const operation=userHearts.includes(req.params.id)? '$pull':'$addToSet';
+ const updateHearts=await User.findByIdAndUpdate(req.user._id,{
+     [operation]:{hearts: req.params.id}},
+        {new: true}
+    );
+
+
+ res.json(updateHearts);
+
+
+
+
+};
