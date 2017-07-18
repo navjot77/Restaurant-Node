@@ -1,1 +1,9 @@
 node_modules/
+variables.env
+.DS_Store
+*.log
+.idea
+haters/
+public/uploads/*
+!*.gitkeep
+!public/uploads/store.png

@@ -13,6 +13,7 @@ router.get('/add', userController.isLoggedIn,storeController.adPage);
 router.post('/add',userController.isLoggedIn, storeController.uploadPhoto, catchErrors(storeController.resize), catchErrors(storeController.saveFormController));
 
 router.get('/stores',  catchErrors(storeController.getStores));
+router.get('/stores/:number',  catchErrors(storeController.getStores));
 
 router.get('/stores/:id/edit',catchErrors(storeController.editStore));
 

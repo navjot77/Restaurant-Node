@@ -1,3 +1,11 @@
-//
-   Created by navjotsingh1 on 7/18/17.
+mixin displayPages(page,totalPages)
+    .pagination
+        .pagination__prev
+            if page > 1
+                a(href=`/stores/${parseInt(page)-1}`) Prev
+        .pagination__text
+             Page #{page} out of #{totalPages}
+        .pagination__next
+            if page<totalPages
+                a(href=`/stores/${parseInt(page)+1}`) Next
 

@@ -1,7 +1,9 @@
 extends layout
 include ./mixins/storeCard
+include ./mixins/pagination
 block content
     h2=title
     .stores
         each store in stores
             +storeMixin(store)
+    +displayPages(page,totalPages)

@@ -44,8 +44,28 @@ exports.saveFormController= async (req,res)=>{
 
 }
 exports.getStores= async (req,res)=>{
-    const stores= await Store.find().populate('reviews');
-    res.render('stores',{title:"Stores Page",stores});
+
+    const page=req.params.number || 1;
+
+    const limitPage=6;
+    const skipPage= (page*limitPage)-limitPage;
+
+    const countStores=await Store.count();
+    const totalPages=Math.ceil(countStores/limitPage);
+
+    const stores= await Store
+        .find()
+        .populate('reviews')
+        .skip(skipPage)
+        .limit(limitPage);
+
+    if (!stores.length){
+        req.flash('info',"Your requested page not found.")
+        res.redirect(`/stores/${totalPages}`);
+        return;
+    }
+
+    res.render('stores',{title:"Stores Page",stores,page,totalPages});
 }
 exports.editStore= async (req,res)=>{
 
