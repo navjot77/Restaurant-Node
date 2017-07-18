@@ -44,7 +44,7 @@ exports.saveFormController= async (req,res)=>{
 
 }
 exports.getStores= async (req,res)=>{
-    const stores= await Store.find();
+    const stores= await Store.find().populate('reviews');
     res.render('stores',{title:"Stores Page",stores});
 }
 exports.editStore= async (req,res)=>{
