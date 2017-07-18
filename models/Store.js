@@ -106,6 +106,44 @@ storeSchema.statics.getListOfTags=function () {
     ]);
 };
 
+storeSchema.statics.topStores=function(){
+    return this.aggregate([
+        {
+        $lookup : {
+        from:'reviews',
+            localField:'_id',
+            foreignField:'store',
+            as:'reviews'
+    }},
+        {
+            $match:{
+                'reviews.1':{$exists:true}
+            }
+
+        },{
+        $project:{
+            name:'$$ROOT.name',
+            image:'$$ROOT.image',
+            slug:'$$ROOT.slug',
+            reviews: 1,
+            score:{
+                $avg: '$reviews.rating'
+            }
+        }
+        },{
+
+            $sort:{
+                score:-1
+            }
+        },{
+        $limit:7
+        }
+
+    ])
+
+
+};
+
 
 module.exports=mongoose.model('Store',storeSchema)
 

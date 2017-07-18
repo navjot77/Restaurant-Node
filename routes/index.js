@@ -54,6 +54,8 @@ router.get('/hearts',catchErrors(storeController.getHeartStores));
 
 
 router.post('/reviews/:id',catchErrors(reviewController.saveReview))
+
+router.get('/top',catchErrors(storeController.getTopStores));
 module.exports = router;
 
 

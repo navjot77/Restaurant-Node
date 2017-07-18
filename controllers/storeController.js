@@ -190,3 +190,12 @@ exports.getHeartStores=async (req,res)=>{
     });
     res.render('stores',{title:'Favourites', stores});
 };
+
+
+exports.getTopStores=async (req,res)=>{
+
+    const stores=await Store.topStores();
+
+    res.render('topPage',{title:'Top Stores',stores});
+
+}

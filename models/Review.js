@@ -10,7 +10,6 @@ const ReviewSchema=new mongoose.Schema({
     store:{type:mongoose.Schema.ObjectId, ref:'Store', required:'Enter Store for review.'},
     comment:{type:String, required:'Review must have description'}
 
-
 });
 
 
