@@ -30,6 +30,8 @@ const userSchema= new mongoose.Schema({
     hearts:[
         {type:mongoose.Schema.ObjectId, ref: 'Store'}
     ]
+},{
+    toJSON:{virtuals:true}
 });
 
 userSchema.plugin(passportLocal,{usernameField:'user_email'});

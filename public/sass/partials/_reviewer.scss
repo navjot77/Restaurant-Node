@@ -30,6 +30,7 @@
         &[for="star3"] { order: 3; }
         &[for="star2"] { order: 2; }
         &[for="star1"] { order: 1; }
+
         &:hover, &:hover ~ label {
           color: lighten($yellow,20%);
         }

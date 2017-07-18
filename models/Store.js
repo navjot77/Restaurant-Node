@@ -43,11 +43,14 @@ const storeSchema = new mongoose.Schema({
                     ref: 'User'
                 }
 
+},{
+    toJSON:{virtuals:true},
+    toObject:{virtuals:true}
 });
 
 storeSchema.index({
    name: 'text',
-    description:'text'
+   description:'text'
 
 });
 
@@ -81,6 +84,12 @@ storeSchema.pre('save',async function(next){
 });
 
 
+
+storeSchema.virtual('reviews',{
+    ref:'Review',
+    localField:'_id',
+    foreignField:'store'
+});
 
 storeSchema.statics.getListOfTags=function () {
     return this.aggregate([

@@ -97,7 +97,7 @@ exports.updateStore= async (req,res)=>{
 
 exports.viewStore = async (req,res)=>{
 
-    const store = await Store.findOne({slug:req.params.storeName});
+    const store = await Store.findOne({slug:req.params.storeName}).populate('author reviews');
     //console.log(store);
     res.render('storePage',{title:`${store.name}`, store});
 
