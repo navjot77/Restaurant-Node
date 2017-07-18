@@ -4,6 +4,4 @@ variables.env
 *.log
 .idea
 haters/
-public/uploads/*
-!*.gitkeep
-!public/uploads/store.png
+variable.env.now
